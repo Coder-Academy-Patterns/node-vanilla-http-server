@@ -1,20 +1,47 @@
 const HTTP = require('http')
-const { sendJSON } = require('./utils')
+const { sendJSON, readBodyAsJSON } = require('./utils')
+
+let bio = 'An adventurer and wily intellectual, Mark Twain wrote classic American novels'
 
 const server = HTTP.createServer((request, response) => {
   const path = request.url
   console.log('Request received', path)
-  if (path === '/') {
+
+  if (path === '/bio') {
+    if (request.method === 'PUT') {
+      readBodyAsJSON(request, (error, json) => {
+        if (error) {
+          sendJSON(response, {
+            error: error.message
+          })
+          return
+        }
+
+        const newBio = json.text
+        bio = newBio
+        sendJSON(response, {
+          message: 'Bio changed'
+        })
+      })
+      // Change the bio
+    }
+    else {
+      sendJSON(response, {
+        text: bio
+      })
+    }
+  }
+  else if (path === '/') {
     response.end('Home')
   }
   else if (path === '/opensesame') {
     response.end('Oooh you found the secret')
   }
   else if (path === '/about') {
-    sendHTML(response, `
-<h1>About</h1>
-<p>This is a paragraph</p>
-`)
+//     sendHTML(response, `
+// <h1>About</h1>
+// <p>This is a paragraph</p>
+// `)
 
     response.writeHead(200, {
       'Content-Type': 'text/html'
@@ -22,8 +49,13 @@ const server = HTTP.createServer((request, response) => {
     response.end(`
 <!doctype html>
 <html>
+  <head>
+    <link rel='stylesheet' href='/assets/main.css'>
+    <link rel='stylesheet' href='/assets/color/blue'>
+  </head>
   <body>
     <h1>About</h1>
+    <p>${ bio }</p>
     <p>This is a paragraph</p>
   </body>
 </html>
@@ -46,6 +78,29 @@ const server = HTTP.createServer((request, response) => {
       { name: 'Deer Park East', postcode: 3022 },
       { name: 'Ardeer', postcode: 3022 }
     ])
+  }
+  else if (path === '/assets/main.css') {
+    response.writeHead(200, {
+      'Content-Type': 'text/css'
+    })
+    response.end(`
+body {
+  font-family: sans-serif;
+}
+`)
+  }
+  //else if (/^\/assets\/color\//.test(path)) {
+  // e.g. /assets/color/red
+  else if (path.indexOf('/assets/color') === 0) {
+    const color = path.slice(14)
+    response.writeHead(200, {
+      'Content-Type': 'text/css'
+    })
+    response.end(`
+body {
+  color: ${color};
+}
+`)
   }
   else {
     response.writeHead(404)

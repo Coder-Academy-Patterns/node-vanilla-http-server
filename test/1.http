@@ -15,3 +15,16 @@ GET http://localhost:7000/postcode/3020
 
 ###
 GET http://localhost:7000/sdfgdsfgsdfgdsf
+
+
+###
+GET http://localhost:7000/bio
+
+
+###
+PUT http://localhost:7000/bio
+Content-Type: application/blah
+
+{
+  "text": "I invented the internet"
+}
