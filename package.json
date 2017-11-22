@@ -1,0 +1,14 @@
+{
+  "name": "node-vanilla-http-server-demo",
+  "version": "1.0.0",
+  "description": "Vanilla web server in Node.js",
+  "main": "server.js",
+  "author": "Patrick Smith",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "dev": "nodemon server.js"
+  }
+}

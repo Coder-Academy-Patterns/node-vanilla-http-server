@@ -1,0 +1,13 @@
+GET http://localhost:7000/
+
+###
+
+GET http://localhost:7000/opensesame
+
+###
+
+GET http://localhost:7000/postcode.json
+
+###
+
+GET http://localhost:7000/sdfgdsfgsdfgdsf
