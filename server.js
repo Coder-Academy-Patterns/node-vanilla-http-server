@@ -89,7 +89,6 @@ body {
 }
 `)
   }
-  //else if (/^\/assets\/color\//.test(path)) {
   // e.g. /assets/color/red
   else if (path.indexOf('/assets/color/') === 0) {
     // Get the color part, so ignore the leading '/assets/color/'
