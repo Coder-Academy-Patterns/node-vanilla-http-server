@@ -20,4 +20,4 @@
 4. Add `/assets/main.css` route with some simple CSS
 5. Change `sendHTML()` to add a `<link>` to the **main.css** URL
 6. (Advanced) Add an *assets* directory with an gif file inside. Serve that file at `/assets/example.gif` with the correct content type.
-7. (Advanced) Add a catch-all `/postcode/(number)` route, which reads a matching file in a *postcodes* directory. e.g. `/postcode/3040` will read the file at `/postcodes/3040.json` in the project directory, and send it back.
+7. (Advanced) Add a catch-all `/postcode/(number)` route, which reads a matching file in a *postcodes* directory. e.g. `/postcode/3040` will read the file at `/postcodes/3040.json` in the project directory, and send it back. Otherwise, if no matching file is found, it will 404
