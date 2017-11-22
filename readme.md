@@ -13,7 +13,7 @@
     <h1>About</h1>
     <p>This is a paragraph</p>
     `)
-3. Change the *not found* route to send back JSON instead of plain text, while still keeping the 404 status code
+3. Change the *not found* route to send back JSON instead of plain text, while still keeping the 404 status code — e.g. `{ "error": "Page not found" }`
 4. Add `/assets/main.css` route with some simple CSS
 5. Change `sendHTML()` to add a `<link>` to the **main.css** URL
-6. 
+6. Add a *assets* directory with an gif file inside. Serve that file at `/assets/example.gif` with the correct content type.
