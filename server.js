@@ -91,7 +91,8 @@ body {
   }
   //else if (/^\/assets\/color\//.test(path)) {
   // e.g. /assets/color/red
-  else if (path.indexOf('/assets/color') === 0) {
+  else if (path.indexOf('/assets/color/') === 0) {
+    // Get the color part, so ignore the leading '/assets/color/'
     const color = path.slice(14)
     response.writeHead(200, {
       'Content-Type': 'text/css'
