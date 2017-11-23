@@ -1,13 +1,3 @@
-1. Add json response
-1. Add html response
-1. Add 404 status
-1. POST? Bio message variable
-  - GET /bio
-  - PUT /bio
-  - Served by /about
-1. Add image response?
-
-
 ## Challenges
 
 1. Add `/postcode/3021` json response
